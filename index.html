@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>NextChapter Books</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header class="navbar">
+            <div class="container nav-content">
+                <a class="logo" href="#home">NextChapter Books</a>
+                <nav class="nav-links" aria-label="Primary">
+                    <a href="#home">Home</a>
+                    <a href="#shop">About</a>
+                    <a href="#about">Shop</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <button class="cart-button" id="cartButton"
+                    aria-label="Open cart">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle"
+                    aria-label="Toggle menu">
+                    
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero" id="home">
+                <div class="container hero-content">
+                    <div>
+                        <p class="hero-eyebrow">Welcome to NextChapter Books</p>
+                        <h1>Where every story opens a new world.</h1>
+                        <p class="hero-subtitle">
+                            Curated collections of modern classics, page-turning
+                            thrillers, and soulful
+                            self-development guides.
+                        </p>
+                        <div class="hero-actions">
+                            <a class="btn primary" href="#shop">Shop the
+                                collection</a>
+                            <a class="btn ghost" href="#about">Learn our
+                                story</a>
+                        </div>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-card-content">
+                            <p class="hero-card-label"></p>
+                            <h3>The Midnight Archive</h3>
+                            <p>Atmospheric fantasy and unforgettable characters.</p>
+                        </div>
+                        <div class="hero-card-image" role="img" aria-label="Book cover">
+                            <img src="https://iinimg.com/1200x/d4/7b/70/d47b70fce3c8747957d1f72672b5941f.jpg"
+                                alt="The books cover" />    
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about" id="about">
+                <div class="container about-content">
+                    <div>
+                        <h2>About NextChapter Books</h2>
+                        <p>
+                            NextChapter Books was founded with a simple mission:
+                            to connect readers with stories
+                            that move them forward. From immersive fantasy
+                            worlds to modern romance, we curate
+                            thoughtful titles that inspire curiosity and growth.
+                        </p>
+                        <p>
+                            Our team of bibliophiles hand-picks every title,
+                            spotlighting emerging authors and
+                            timeless storytellers alike. Every purchase supports
+                            local literacy initiatives and
+                            community reading circles.
+                        </p>
+                </div>
+                <div class="container about-card-wrapper">
+                    <div class="about-card">
+                        <h3>Our Promise</h3>
+                        <ul>
+                            <li>Thoughtfully curated shelves updated
+                                weekly.</li>
+                            <li>Fast delivery with eco-friendly packaging.</li>
+                            <li>Personalized recommendations for every
+                                reader.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="shop" id="shop">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Book Shop</h2>
+                        <p>Explore curated shelves designed for every
+                            reader.</p>
+                    </div>
+                    <div class="filters" role="group"
+                        aria-label="Book categories">
+                        <button class="filter-btn active"
+                            data-category="all">All</button>
+                        <button class="filter-btn"
+                            data-category="fantasy">Fantasy Novels</button>
+                        <button class="filter-btn" data-category="horror">Horror
+                            Novels</button>
+                        <button class="filter-btn"
+                            data-category="romance">Romantic Novels</button>
+                        <button class="filter-btn" data-category="self">Self
+                            Development</button>
+                    </div>
+                    <div class="product-grid" id="productGrid"></div>
+                </div>
+            </section>
+
+            <section class="contact" id="contact">
+                <div class="container contact-content">
+                    <div>
+                        <h2>Contact</h2>
+                        <p>Have a question or want a recommendation? We would
+                            love to hear from you.</p>
+                        <div class="contact-details">
+                            <p><strong>Email:</strong>
+                                hello@nextchapterbooks.com</p>
+                            <p><strong>Phone:</strong> +1 (555) 012-0456</p>
+                            <p><strong>Location:</strong> 24 Booklane Ave,
+                                Portland, OR</p>
+                        </div>
+                    </div>
+                    <form class="contact-form" aria-label="Contact form">
+                        <label>
+                            Name
+                            <input type="text" name="name"
+                                placeholder="Your name" required />
+                        </label>
+                        <label>
+                            Email
+                            <input type="email" name="email"
+                                placeholder="Your email" required />
+                        </label>
+                        <label>
+                            Message
+                            <textarea name="message" rows="4"
+                                placeholder="Tell us what you are looking for"
+                                required></textarea>
+                        </label>
+                        <button class="btn primary" type="submit">Send
+                            Message</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container footer-content">
+                <div>
+                    <h3>NextChapter Books</h3>
+                    <p>Turning pages, building community, and sparking
+                        imagination.</p>
+                </div>
+                <div class="footer-links">
+                    <div>
+                        <h4>Quick Links</h4>
+                        <a href="#home">Home</a>
+                        <a href="#shop">Shop</a>
+                        <a href="#about">About</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <div>
+                        <h4>Social</h4>
+                        <a href="https://instagram.com" target="_blank"
+                            rel="noopener noreferrer">Instagram</a>
+                        <a href="https://twitter.com" target="_blank"
+                            rel="noopener noreferrer">X (Twitter)</a>
+                        <a href="https://pinterest.com" target="_blank"
+                            rel="noopener noreferrer">Pinterest</a>
+                    </div>
+                </div>
+            </div>
+            <p class="footer-bottom">© 2026 NextChapter Books. All rights
+                reserved.</p>
+        </footer>
+
+        <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+            <div class="cart-header">
+                <h3>Your Cart</h3>
+                <button class="close-cart" id="closeCart"
+                    aria-label="Close cart">✕</button>
+            </div>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <button class="btn primary" type="button">Checkout</button>
+            </div>
+        </div>
+        <div class="overlay" id="overlay"></div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
