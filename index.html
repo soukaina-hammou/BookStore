@@ -1,197 +1,260 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>NextChapter Books</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookHaven - Your Digital Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .book-card {
+            transition: all 0.3s ease;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .category-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .navbar-shadow {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Fixed Navbar -->
+    <nav class="bg-white fixed w-full top-0 z-50 navbar-shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-book-open text-3xl text-purple-600 mr-2"></i>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">BookHaven</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600 font-medium transition">Home</a>
+                    <a href="#books" class="text-gray-700 hover:text-purple-600 font-medium transition">Books</a>
+                    <a href="#about" class="text-gray-700 hover:text-purple-600 font-medium transition">About Us</a>
+                    <a href="#contact" class="text-gray-700 hover:text-purple-600 font-medium transition">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-700 hover:text-purple-600 transition">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    <button class="text-gray-700 hover:text-purple-600 transition relative">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
+                    <button class="md:hidden text-gray-700" id="mobileMenuBtn">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-purple-600 font-medium">Home</a>
+                <a href="#books" class="block py-2 text-gray-700 hover:text-purple-600 font-medium">Books</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-purple-600 font-medium">About Us</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-purple-600 font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap"
-			rel="stylesheet"/>                                                                                       
-		<script src="https://cdn.tailwindcss.com"></script>
-	</head>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section pt-24 pb-20 px-4">
+        <div class="max-w-7xl mx-auto text-center text-white">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">Discover Your Next Adventure</h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">Explore thousands of books and novels from every genre</p>
+            <a href="#books" class="inline-block bg-white text-purple-600 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-100 transition transform hover:scale-105">
+                Browse Collection
+            </a>
+        </div>
+    </section>
 
-	<body class="bg-brand-50 font-sans text-neutral-900">
-		<!-- Navbar -->
-		<header class="sticky top-0 z-40 border-b border-neutral-200 bg-white/80 backdrop-blur">
-			<div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3">
-				<a href="#home" class="font-display text-lg font-bold tracking-tight">
-					NextChapter Books
-				</a>
+    <!-- Books Section -->
+    <section id="books" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Our Collection</h2>
+            <p class="text-center text-gray-600 mb-12">Find your perfect read from our curated selection</p>
+            
+            <!-- Category Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="category-btn active px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium" data-category="all">
+                    All Books
+                </button>
+                <button class="category-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium" data-category="fantasy">
+                    Fantasy Novels
+                </button>
+                <button class="category-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium" data-category="horror">
+                    Horror Novels
+                </button>
+                <button class="category-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium" data-category="romantic">
+                    Romantic Novels
+                </button>
+                <button class="category-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium" data-category="self-development">
+                    Self-Development
+                </button>
+            </div>
+            
+            <!-- Books Grid -->
+            <div id="booksContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Books will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
 
-				<nav class="hidden items-center gap-4 text-sm font-medium text-neutral-700 md:flex" aria-label="Primary">
-					<a class="hover:text-neutral-950" href="#home">Home</a>
-					<a class="hover:text-neutral-950" href="#shop">Shop</a>
-					<a class="hover:text-neutral-950" href="#about">About</a>
-				</nav>
+    <!-- About Us Section -->
+    <section id="about" class="py-20 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">About BookHaven</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-book text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Vast Collection</h3>
+                    <p class="text-gray-600">Access thousands of books across all genres, from timeless classics to modern bestsellers.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-truck text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Fast Delivery</h3>
+                    <p class="text-gray-600">Get your books delivered right to your doorstep within 3-5 business days.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-star text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Quality Guarantee</h3>
+                    <p class="text-gray-600">All our books are carefully selected and quality-checked before shipping.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-				<button
-					id="cartButton"
-					type="button"
-					class="relative inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-3 py-2 text-sm font-semibold shadow-sm hover:bg-neutral-50"
-					aria-haspopup="dialog"
-					aria-controls="cartDrawer"
-					aria-expanded="false"
-				>
-					<span>Cart</span>
-					<span
-						id="cartCount"
-						class="grid h-6 min-w-6 place-items-center rounded-full bg-brand-800 px-2 text-xs font-semibold text-white"
-						>0</span
-					>
-				</button>
-			</div>
-		</header>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Get In Touch</h2>
+            <p class="text-center text-gray-600 mb-12">Have questions? We'd love to hear from you.</p>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <form id="contactForm">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <div class="mb-8">
+                        <div class="flex items-start mb-6">
+                            <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-map-marker-alt text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800 mb-1">Address</h3>
+                                <p class="text-gray-600">123 Book Street, Library District<br>New York, NY 10001</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start mb-6">
+                            <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-phone text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800 mb-1">Phone</h3>
+                                <p class="text-gray-600">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start mb-6">
+                            <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-envelope text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800 mb-1">Email</h3>
+                                <p class="text-gray-600">info@bookhaven.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-4">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-purple-100 w-10 h-10 rounded-full flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-purple-100 w-10 h-10 rounded-full flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-purple-100 w-10 h-10 rounded-full flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-purple-100 w-10 h-10 rounded-full flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<!-- Hero -->
-		<section id="home" class="border-b border-neutral-200">
-			<div class="mx-auto grid w-full max-w-6xl gap-8 px-4 py-10 md:grid-cols-2 md:items-center md:py-14">
-				<div>
-					<p class="text-sm font-semibold text-brand-900">Curated book picks</p>
-					<h1 class="mt-3 font-display text-3xl font-bold tracking-tight md:text-5xl">
-						Where every story opens a new world.
-					</h1>
-					<p class="mt-4 text-neutral-700">
-						Discover fantasy, horror, romance, and self development titles—hand-picked for your next chapter.
-					</p>
-					<div class="mt-7 flex flex-wrap gap-3">
-						<a
-							href="#shop"
-							class="rounded-full bg-brand-800 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-900"
-						>
-							Shop books
-						</a>
-						<a
-							href="#about"
-							class="rounded-full border border-neutral-200 bg-white px-5 py-3 text-sm font-semibold hover:bg-neutral-50"
-						>
-							Learn more
-						</a>
-					</div>
-				</div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex items-center justify-center mb-4">
+                <i class="fas fa-book-open text-2xl text-purple-400 mr-2"></i>
+                <span class="text-2xl font-bold">BookHaven</span>
+            </div>
+            <p class="text-gray-400 mb-4">Your gateway to endless stories and knowledge</p>
+            <p class="text-gray-500 text-sm">&copy; 2026 BookHaven. All rights reserved.</p>
+        </div>
+    </footer>
 
-				<div class="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
-					<p class="text-sm font-semibold text-neutral-800">Featured picks</p>
-					<p class="mt-1 text-sm text-neutral-600">Scroll to browse.</p>
-					<div class="mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2" id="featuredRow"></div>
-				</div>
-			</div>
-		</section>
-
-		<!-- Shop -->
-		<section id="shop" class="mx-auto w-full max-w-6xl px-4 py-10 md:py-14">
-			<div class="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-				<div>
-					<h2 class="text-2xl font-bold tracking-tight">Shop</h2>
-					<p class="mt-1 text-sm text-neutral-600">Filter by category and add books to your cart.</p>
-				</div>
-				<div class="text-sm text-neutral-600" id="resultsMeta"></div>
-			</div>
-
-			<div class="mt-6 flex flex-wrap gap-2" role="group" aria-label="Book categories">
-				<button class="filter-btn rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-semibold hover:bg-neutral-50" data-category="all">
-					All
-				</button>
-				<button class="filter-btn rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-semibold hover:bg-neutral-50" data-category="fantasy">
-					Fantasy novels
-				</button>
-				<button class="filter-btn rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-semibold hover:bg-neutral-50" data-category="horror">
-					Horror novels
-				</button>
-				<button class="filter-btn rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-semibold hover:bg-neutral-50" data-category="romance">
-					Romantic novels
-				</button>
-				<button class="filter-btn rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-semibold hover:bg-neutral-50" data-category="self">
-					Self development
-				</button>
-			</div>
-
-			<div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" id="productGrid"></div>
-		</section>
-
-		<!-- About -->
-		<section id="about" class="border-t border-neutral-200 bg-white">
-			<div class="mx-auto w-full max-w-6xl px-4 py-10 md:py-14">
-				<div class="grid gap-8 md:grid-cols-2 md:items-start">
-					<div>
-						<h2 class="text-2xl font-bold tracking-tight">About</h2>
-						<p class="mt-3 text-neutral-700">
-							NextChapter Books is a modern bookstore experience built for readers who love curated shelves.
-							This demo is frontend-only: all products and cart behavior are simulated in JavaScript.
-						</p>
-					</div>
-					<div class="rounded-3xl border border-neutral-200 bg-brand-50 p-6">
-						<h3 class="font-semibold">What you get</h3>
-						<ul class="mt-3 space-y-2 text-sm text-neutral-700">
-							<li>• Responsive product grid with hover effects</li>
-							<li>• Category filters (fantasy, horror, romance, self)</li>
-							<li>• Slide-over cart with localStorage persistence</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- Footer -->
-		<footer class="border-t border-neutral-200 bg-white">
-			<div class="mx-auto w-full max-w-6xl px-4 py-8 text-sm text-neutral-600">
-				© <span id="year"></span> NextChapter Books
-			</div>
-		</footer>
-
-		<!-- Cart Drawer -->
-		<div id="cartOverlay" class="fixed inset-0 z-50 hidden bg-black/40" aria-hidden="true"></div>
-		<aside
-			id="cartDrawer"
-			class="fixed right-0 top-0 z-[60] h-full w-full max-w-md translate-x-full border-l border-neutral-200 bg-white shadow-2xl transition-transform"
-			role="dialog"
-			aria-modal="true"
-			aria-label="Shopping cart"
-		>
-			<div class="flex items-center justify-between border-b border-neutral-200 px-5 py-4">
-				<div>
-					<p class="text-sm text-neutral-500">Your cart</p>
-					<p class="text-lg font-semibold" id="cartHeaderCount">0 item(s)</p>
-				</div>
-				<button
-					id="closeCart"
-					type="button"
-					class="rounded-full border border-neutral-200 px-3 py-2 text-sm font-semibold hover:bg-neutral-50"
-				>
-					Close
-				</button>
-			</div>
-
-			<div class="h-[calc(100%-172px)] overflow-auto px-5 py-4">
-				<div id="cartItems"></div>
-			</div>
-
-			<div class="border-t border-neutral-200 px-5 py-4">
-				<div class="flex items-center justify-between text-sm">
-					<span class="text-neutral-600">Total</span>
-					<span class="text-lg font-bold" id="cartTotal">$0.00</span>
-				</div>
-				<div class="mt-3 flex gap-2">
-					<button
-						id="clearCart"
-						type="button"
-						class="flex-1 rounded-full border border-neutral-200 px-4 py-2 text-sm font-semibold hover:bg-neutral-50"
-					>
-						Clear
-					</button>
-					<button
-						type="button"
-						class="flex-1 rounded-full bg-brand-800 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-900"
-					>
-						Checkout
-					</button>
-				</div>
-				<p class="mt-2 text-xs text-neutral-500">Frontend demo only. No payments.</p>
-			</div>
-		</aside>
-
-		<script src="script.js"></script>
-	</body>
+    <script src="script.js"></script>
+</body>
 </html>

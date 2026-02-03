@@ -1,409 +1,274 @@
-// Frontend-only bookstore demo (Tailwind CDN + Vanilla JS)
-
-// Mock data (at least 8 books)
-const books = [
-	{
-		id: 1,
-		title: "The Midnight Archive",
-		author: "Elena Rivers",
-		price: 24,
-		category: "fantasy",
-		coverUrl: "https://placehold.co/600x840/5b4b8a/ffffff?text=Fantasy+Cover",
-	},
-	{
-		id: 2,
-		title: "Whispers in Ash",
-		author: "Dorian Black",
-		price: 19,
-		category: "horror",
-		coverUrl: "https://placehold.co/600x840/2b2d42/ffffff?text=Horror+Cover",
-	},
-	{
-		id: 3,
-		title: "Sunlit Promises",
-		author: "Ava Hart",
-		price: 21,
-		category: "romance",
-		coverUrl: "https://placehold.co/600x840/d4a5a5/ffffff?text=Romance+Cover",
-	},
-	{
-		id: 4,
-		title: "The Quiet Habit",
-		author: "Miles Reed",
-		price: 18,
-		category: "self",
-		coverUrl: "https://placehold.co/600x840/9fc5a8/ffffff?text=Self+Dev",
-	},
-	{
-		id: 5,
-		title: "Kingdoms of Mist",
-		author: "Rhea Sol",
-		price: 26,
-		category: "fantasy",
-		coverUrl: "https://placehold.co/600x840/6d597a/ffffff?text=Fantasy+Cover",
-	},
-	{
-		id: 6,
-		title: "The Hollow House",
-		author: "Cyrus Vale",
-		price: 20,
-		category: "horror",
-		coverUrl: "https://placehold.co/600x840/3b3b3b/ffffff?text=Horror+Cover",
-	},
-	{
-		id: 7,
-		title: "Letters at Dawn",
-		author: "Mira Lane",
-		price: 22,
-		category: "romance",
-		coverUrl: "https://placehold.co/600x840/f6c1c7/ffffff?text=Romance+Cover",
-	},
-	{
-		id: 8,
-		title: "Focus Rituals",
-		author: "Theo Brooks",
-		price: 17,
-		category: "self",
-		coverUrl: "https://placehold.co/600x840/c7e0c5/ffffff?text=Self+Dev",
-	},
+// Sample books data
+const booksData = [
+    // Fantasy Novels
+    {
+        id: 1,
+        title: "The Dragon's Quest",
+        author: "Emma Silverstone",
+        price: 24.99,
+        category: "fantasy",
+        image: "https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?w=400&h=600&fit=crop",
+        rating: 4.8
+    },
+    {
+        id: 2,
+        title: "Kingdom of Shadows",
+        author: "Marcus Blackwood",
+        price: 22.99,
+        category: "fantasy",
+        image: "https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=400&h=600&fit=crop",
+        rating: 4.6
+    },
+    {
+        id: 3,
+        title: "The Enchanted Forest",
+        author: "Luna Moonlight",
+        price: 19.99,
+        category: "fantasy",
+        image: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&h=600&fit=crop",
+        rating: 4.7
+    },
+    {
+        id: 4,
+        title: "Sword of Destiny",
+        author: "Richard Stormwind",
+        price: 26.99,
+        category: "fantasy",
+        image: "https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=600&fit=crop",
+        rating: 4.9
+    },
+    
+    // Horror Novels
+    {
+        id: 5,
+        title: "The Haunting Hour",
+        author: "Sarah Darkmore",
+        price: 21.99,
+        category: "horror",
+        image: "https://images.unsplash.com/photo-1612178537253-bccd437b730e?w=400&h=600&fit=crop",
+        rating: 4.5
+    },
+    {
+        id: 6,
+        title: "Midnight Screams",
+        author: "Vincent Crow",
+        price: 23.99,
+        category: "horror",
+        image: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&h=600&fit=crop",
+        rating: 4.4
+    },
+    {
+        id: 7,
+        title: "The Abandoned Manor",
+        author: "Isabella Graves",
+        price: 20.99,
+        category: "horror",
+        image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop",
+        rating: 4.6
+    },
+    {
+        id: 8,
+        title: "Whispers in the Dark",
+        author: "Nathan Shadow",
+        price: 22.99,
+        category: "horror",
+        image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=600&fit=crop",
+        rating: 4.7
+    },
+    
+    // Romantic Novels
+    {
+        id: 9,
+        title: "Love in Paris",
+        author: "Sophie Laurent",
+        price: 18.99,
+        category: "romantic",
+        image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop",
+        rating: 4.8
+    },
+    {
+        id: 10,
+        title: "Summer Romance",
+        author: "Emily Rose",
+        price: 17.99,
+        category: "romantic",
+        image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=600&fit=crop",
+        rating: 4.6
+    },
+    {
+        id: 11,
+        title: "Hearts Entwined",
+        author: "Olivia Bennett",
+        price: 19.99,
+        category: "romantic",
+        image: "https://images.unsplash.com/photo-1491841651911-c44c30c34548?w=400&h=600&fit=crop",
+        rating: 4.7
+    },
+    {
+        id: 12,
+        title: "Forever Yours",
+        author: "Charlotte Vale",
+        price: 16.99,
+        category: "romantic",
+        image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=600&fit=crop",
+        rating: 4.9
+    },
+    
+    // Self-Development Books
+    {
+        id: 13,
+        title: "Mindful Living",
+        author: "Dr. James Wilson",
+        price: 29.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop",
+        rating: 4.9
+    },
+    {
+        id: 14,
+        title: "The Success Mindset",
+        author: "Michael Roberts",
+        price: 27.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&h=600&fit=crop",
+        rating: 4.8
+    },
+    {
+        id: 15,
+        title: "Atomic Habits Guide",
+        author: "Patricia Chen",
+        price: 25.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400&h=600&fit=crop",
+        rating: 4.9
+    },
+    {
+        id: 16,
+        title: "Peak Performance",
+        author: "David Martinez",
+        price: 28.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        rating: 4.7
+    }
 ];
 
-const STORAGE_KEY = "bookstore_cart_v1";
+// Initialize cart
+let cart = [];
 
-const els = {
-	productGrid: document.getElementById("productGrid"),
-	featuredRow: document.getElementById("featuredRow"),
-	filterButtons: document.querySelectorAll(".filter-btn"),
-	resultsMeta: document.getElementById("resultsMeta"),
-	year: document.getElementById("year"),
+// Mobile menu toggle
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
 
-	cartButton: document.getElementById("cartButton"),
-	cartCount: document.getElementById("cartCount"),
-	cartHeaderCount: document.getElementById("cartHeaderCount"),
-	cartDrawer: document.getElementById("cartDrawer"),
-	cartOverlay: document.getElementById("cartOverlay"),
-	closeCart: document.getElementById("closeCart"),
-	clearCart: document.getElementById("clearCart"),
-	cartItems: document.getElementById("cartItems"),
-	cartTotal: document.getElementById("cartTotal"),
-};
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
 
-let activeCategory = "all";
+// Category filtering
+const categoryBtns = document.querySelectorAll('.category-btn');
+const booksContainer = document.getElementById('booksContainer');
 
-/**
- * Cart format stored in localStorage:
- * [{ id: number, qty: number }]
- */
-function loadCart() {
-	try {
-		const raw = localStorage.getItem(STORAGE_KEY);
-		if (!raw) return [];
-		const parsed = JSON.parse(raw);
-		if (!Array.isArray(parsed)) return [];
-		return parsed
-			.filter((x) => typeof x?.id === "number" && typeof x?.qty === "number")
-			.map((x) => ({ id: x.id, qty: Math.max(1, Math.floor(x.qty)) }));
-	} catch {
-		return [];
-	}
+// Display books function
+function displayBooks(category = 'all') {
+    let filteredBooks = category === 'all' 
+        ? booksData 
+        : booksData.filter(book => book.category === category);
+    
+    booksContainer.innerHTML = filteredBooks.map(book => `
+        <div class="book-card bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="relative h-80 overflow-hidden bg-gray-200">
+                <img src="${book.image}" alt="${book.title}" class="w-full h-full object-cover">
+                <div class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-sm font-semibold">
+                    <i class="fas fa-star"></i> ${book.rating}
+                </div>
+            </div>
+            <div class="p-5">
+                <h3 class="text-lg font-semibold text-gray-800 mb-1 truncate">${book.title}</h3>
+                <p class="text-sm text-gray-600 mb-3">by ${book.author}</p>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-2xl font-bold text-purple-600">$${book.price}</span>
+                    <span class="text-xs text-gray-500 uppercase px-2 py-1 bg-gray-100 rounded">${book.category}</span>
+                </div>
+                <button onclick="addToCart(${book.id})" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 rounded-lg font-medium hover:opacity-90 transition">
+                    <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                </button>
+            </div>
+        </div>
+    `).join('');
 }
 
-function saveCart(cart) {
-	localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
-}
+// Category button click handlers
+categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+        // Display filtered books
+        const category = btn.getAttribute('data-category');
+        displayBooks(category);
+    });
+});
 
-function formatPrice(value) {
-	return new Intl.NumberFormat("en-US", {
-		style: "currency",
-		currency: "USD",
-	}).format(value);
-}
-
-function getBookById(id) {
-	return books.find((b) => b.id === id) || null;
-}
-
-function getFilteredBooks() {
-	if (activeCategory === "all") return books;
-	return books.filter((b) => b.category === activeCategory);
-}
-
-function renderFeatured() {
-	if (!els.featuredRow) return;
-	const featured = books.slice(0, 4);
-	els.featuredRow.innerHTML = featured
-		.map((b) => {
-			return `
-				<article class="min-w-[220px] snap-start overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
-					<div class="relative">
-						<img src="${b.coverUrl}" alt="${b.title} cover" class="h-44 w-full object-cover" />
-						<div class="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-neutral-900">
-							${b.category}
-						</div>
-					</div>
-					<div class="p-4">
-						<p class="line-clamp-1 text-sm font-semibold">${b.title}</p>
-						<p class="mt-1 text-xs text-neutral-600">by ${b.author}</p>
-						<div class="mt-3 flex items-center justify-between">
-							<span class="text-sm font-bold">${formatPrice(b.price)}</span>
-							<button data-add-to-cart="${b.id}" class="rounded-full bg-brand-800 px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-900">Add</button>
-						</div>
-					</div>
-				</article>
-			`;
-		})
-		.join("");
-}
-
-function renderProducts() {
-	const list = getFilteredBooks();
-	if (els.resultsMeta) {
-		els.resultsMeta.textContent = `${list.length} book(s)`;
-	}
-
-	els.productGrid.innerHTML = list
-		.map((b) => {
-			return `
-				<article class="group overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-					<div class="relative">
-						<img src="${b.coverUrl}" alt="${b.title} cover" class="aspect-[3/4] w-full object-cover transition group-hover:scale-[1.02]" />
-						<div class="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-neutral-900">
-							${b.category}
-						</div>
-					</div>
-					<div class="space-y-1 p-4">
-						<h3 class="line-clamp-1 font-semibold tracking-tight">${b.title}</h3>
-						<p class="text-sm text-neutral-600">by ${b.author}</p>
-						<p class="pt-1 text-sm font-bold">${formatPrice(b.price)}</p>
-					</div>
-					<div class="flex items-center justify-between gap-3 border-t border-neutral-200 p-4">
-						<button
-							type="button"
-							data-add-to-cart="${b.id}"
-							class="w-full rounded-full bg-brand-800 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-900"
-						>
-							Add to cart
-						</button>
-					</div>
-				</article>
-			`;
-		})
-		.join("");
-}
-
-function setActiveFilterButton() {
-	els.filterButtons.forEach((btn) => {
-		const isActive = btn.dataset.category === activeCategory;
-		btn.classList.toggle("bg-brand-800", isActive);
-		btn.classList.toggle("text-white", isActive);
-		btn.classList.toggle("border-brand-800", isActive);
-		btn.classList.toggle("bg-white", !isActive);
-	});
-}
-
-function openCart() {
-	els.cartDrawer.classList.remove("translate-x-full");
-	els.cartOverlay.classList.remove("hidden");
-	els.cartOverlay.setAttribute("aria-hidden", "false");
-	els.cartButton.setAttribute("aria-expanded", "true");
-}
-
-function closeCart() {
-	els.cartDrawer.classList.add("translate-x-full");
-	els.cartOverlay.classList.add("hidden");
-	els.cartOverlay.setAttribute("aria-hidden", "true");
-	els.cartButton.setAttribute("aria-expanded", "false");
-}
-
-function computeCartDerived(cart) {
-	const items = cart
-		.map((ci) => {
-			const book = getBookById(ci.id);
-			if (!book) return null;
-			return { book, qty: ci.qty };
-		})
-		.filter(Boolean);
-
-	const totalItems = items.reduce((sum, x) => sum + x.qty, 0);
-	const totalPrice = items.reduce((sum, x) => sum + x.book.price * x.qty, 0);
-	return { items, totalItems, totalPrice };
-}
-
-function renderCart() {
-	const cart = loadCart();
-	const { items, totalItems, totalPrice } = computeCartDerived(cart);
-
-	els.cartCount.textContent = String(totalItems);
-	els.cartHeaderCount.textContent = `${totalItems} item(s)`;
-	els.cartTotal.textContent = formatPrice(totalPrice);
-
-	if (items.length === 0) {
-		els.cartItems.innerHTML = `
-			<div class="rounded-2xl border border-dashed border-neutral-200 p-6 text-center">
-				<p class="font-semibold">Your cart is empty</p>
-				<p class="mt-1 text-sm text-neutral-600">Add books from the shop.</p>
-			</div>
-		`;
-		return;
-	}
-
-	els.cartItems.innerHTML = `
-		<ul class="space-y-4">
-			${items
-				.map(({ book, qty }) => {
-					return `
-						<li class="flex gap-3 rounded-2xl border border-neutral-200 p-3">
-							<img src="${book.coverUrl}" alt="${book.title} cover" class="h-20 w-14 rounded-xl object-cover" />
-							<div class="min-w-0 flex-1">
-								<p class="truncate font-semibold">${book.title}</p>
-								<p class="truncate text-sm text-neutral-600">by ${book.author}</p>
-								<div class="mt-2 flex items-center justify-between gap-2">
-									<div class="inline-flex items-center overflow-hidden rounded-full border border-neutral-200">
-										<button class="px-3 py-1.5 text-sm hover:bg-neutral-50" data-qty-dec="${book.id}" aria-label="Decrease quantity">−</button>
-										<span class="px-3 py-1.5 text-sm">${qty}</span>
-										<button class="px-3 py-1.5 text-sm hover:bg-neutral-50" data-qty-inc="${book.id}" aria-label="Increase quantity">+</button>
-									</div>
-									<div class="text-right">
-										<p class="text-sm font-semibold">${formatPrice(book.price * qty)}</p>
-										<button class="text-xs text-neutral-600 underline hover:text-neutral-900" data-remove="${book.id}">Remove</button>
-									</div>
-								</div>
-							</div>
-						</li>
-					`;
-				})
-				.join("")}
-		</ul>
-	`;
-}
-
+// Add to cart function
 function addToCart(bookId) {
-	const cart = loadCart();
-	const idx = cart.findIndex((x) => x.id === bookId);
-	if (idx >= 0) {
-		cart[idx].qty += 1;
-	} else {
-		cart.push({ id: bookId, qty: 1 });
-	}
-	saveCart(cart);
-	renderCart();
+    const book = booksData.find(b => b.id === bookId);
+    if (book) {
+        cart.push(book);
+        updateCartCount();
+        showNotification(`"${book.title}" added to cart!`);
+    }
 }
 
-function removeFromCart(bookId) {
-	const cart = loadCart().filter((x) => x.id !== bookId);
-	saveCart(cart);
-	renderCart();
+// Update cart count
+function updateCartCount() {
+    const cartCount = document.querySelector('.fa-shopping-cart').nextElementSibling;
+    cartCount.textContent = cart.length;
 }
 
-function setQty(bookId, nextQty) {
-	const qty = Math.max(0, Math.floor(nextQty));
-	const cart = loadCart();
-	const idx = cart.findIndex((x) => x.id === bookId);
-	if (idx < 0) return;
-
-	if (qty <= 0) {
-		cart.splice(idx, 1);
-	} else {
-		cart[idx].qty = qty;
-	}
-
-	saveCart(cart);
-	renderCart();
+// Show notification
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-300';
+    notification.innerHTML = `
+        <div class="flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.transform = 'translateX(400px)';
+        setTimeout(() => notification.remove(), 300);
+    }, 2000);
 }
 
-function bindEvents() {
-	// Filters
-	els.filterButtons.forEach((btn) => {
-		btn.addEventListener("click", () => {
-			activeCategory = btn.dataset.category || "all";
-			setActiveFilterButton();
-			renderProducts();
-		});
-	});
+// Contact form submission
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    showNotification('Thank you! Your message has been sent.');
+    contactForm.reset();
+});
 
-	// Delegate add-to-cart clicks
-	document.addEventListener("click", (e) => {
-		const target = e.target;
-		if (!(target instanceof HTMLElement)) return;
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const offset = 80; // Height of fixed navbar
+            const targetPosition = target.offsetTop - offset;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            // Close mobile menu if open
+            mobileMenu.classList.add('hidden');
+        }
+    });
+});
 
-		const addId = target.getAttribute("data-add-to-cart");
-		if (addId) {
-			addToCart(Number(addId));
-			openCart();
-			return;
-		}
-
-		const removeId = target.getAttribute("data-remove");
-		if (removeId) {
-			removeFromCart(Number(removeId));
-			return;
-		}
-
-		const incId = target.getAttribute("data-qty-inc");
-		if (incId) {
-			const cart = loadCart();
-			const item = cart.find((x) => x.id === Number(incId));
-			if (item) setQty(item.id, item.qty + 1);
-			return;
-		}
-
-		const decId = target.getAttribute("data-qty-dec");
-		if (decId) {
-			const cart = loadCart();
-			const item = cart.find((x) => x.id === Number(decId));
-			if (item) setQty(item.id, item.qty - 1);
-			return;
-		}
-	});
-
-	// Cart drawer
-	els.cartButton.addEventListener("click", openCart);
-	els.closeCart.addEventListener("click", closeCart);
-	els.cartOverlay.addEventListener("click", closeCart);
-	els.clearCart.addEventListener("click", () => {
-		saveCart([]);
-		renderCart();
-	});
-
-	// Escape to close
-	document.addEventListener("keydown", (e) => {
-		if (e.key === "Escape") closeCart();
-	});
-}
-
-function init() {
-	if (els.year) els.year.textContent = String(new Date().getFullYear());
-	setActiveFilterButton();
-	renderFeatured();
-	renderProducts();
-	renderCart();
-	bindEvents();
-}
-
-document.addEventListener("DOMContentLoaded", init);
-
-// Tailwind CDN config
-			tailwind = {
-				theme: {
-					extend: {
-						fontFamily: {
-							sans: ["Inter", "ui-sans-serif", "system-ui"],
-							display: ["Merriweather", "ui-serif", "Georgia"],
-						},
-						colors: {
-							brand: {
-								50: "#faf7f2",
-								100: "#f3ece0",
-								200: "#e7d7bf",
-								300: "#d7bc95",
-								400: "#c59c69",
-								500: "#b68147",
-								600: "#a56b3c",
-								700: "#875434",
-								800: "#6f442f",
-								900: "#5c3828",
-							},
-						},
-					},
-				},
-			};
+// Initialize page
+displayBooks('all');
