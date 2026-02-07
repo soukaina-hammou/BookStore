@@ -3,38 +3,38 @@ const booksData = [
     // Fantasy Novels
     {
         id: 1,
-        title: "The Dragon's Quest",
-        author: "Emma Silverstone",
+        title: "حوجن",
+        author: "Ibrahim Abbas",
         price: 24.99,
         category: "fantasy",
-        image: "https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/1f/1c/a6/1f1ca67e91b7d990319f6c29e4eb1e0a.jpg",
         rating: 4.8
     },
     {
         id: 2,
-        title: "Kingdom of Shadows",
+        title: "شبكة العنكبوت",
         author: "Marcus Blackwood",
         price: 22.99,
         category: "fantasy",
-        image: "https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/35/4c/78/354c78345005b2876fe7f2c8b05cd630.jpg",
         rating: 4.6
     },
     {
         id: 3,
-        title: "The Enchanted Forest",
+        title: "بيتشيني",
         author: "Luna Moonlight",
         price: 19.99,
         category: "fantasy",
-        image: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/78/19/d5/7819d5d1f5ef7b5e70d5f13856c787cb.jpg",
         rating: 4.7
     },
     {
         id: 4,
-        title: "Sword of Destiny",
+        title: "سعد الدباس",
         author: "Richard Stormwind",
         price: 26.99,
         category: "fantasy",
-        image: "https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/a9/93/fe/a993fe8f450c3427eb7c848c0c019bd6.jpg",
         rating: 4.9
     },
     
@@ -45,7 +45,7 @@ const booksData = [
         author: "Sarah Darkmore",
         price: 21.99,
         category: "horror",
-        image: "https://images.unsplash.com/photo-1612178537253-bccd437b730e?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/4b/d0/2d/4bd02dd3ed4089405a387fd058ff0c42.jpg",
         rating: 4.5
     },
     {
@@ -153,8 +153,39 @@ const booksData = [
     }
 ];
 
-// Initialize cart
+// Initialize cart (stores objects: { id, qty })
 let cart = [];
+
+// Cart UI elements
+const cartButton = document.getElementById('cartButton');
+const cartOverlay = document.getElementById('cartOverlay');
+const cartDrawer = document.getElementById('cartDrawer');
+const cartItemsContainer = document.getElementById('cartItemsContainer');
+const cartGrandTotalEl = document.getElementById('cartGrandTotal');
+const cartCloseBtn = document.getElementById('cartCloseBtn');
+const checkoutBtn = document.getElementById('checkoutBtn');
+const cartCountBadge = document.getElementById('cartCount');
+
+function openCart() {
+    cartOverlay.classList.remove('hidden');
+    cartDrawer.classList.remove('translate-x-full');
+}
+
+function closeCart() {
+    cartOverlay.classList.add('hidden');
+    cartDrawer.classList.add('translate-x-full');
+}
+
+// Wire cart open/close
+if (cartButton) {
+    cartButton.addEventListener('click', openCart);
+}
+if (cartOverlay) {
+    cartOverlay.addEventListener('click', closeCart);
+}
+if (cartCloseBtn) {
+    cartCloseBtn.addEventListener('click', closeCart);
+}
 
 // Mobile menu toggle
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -186,10 +217,10 @@ function displayBooks(category = 'all') {
                 <h3 class="text-lg font-semibold text-gray-800 mb-1 truncate">${book.title}</h3>
                 <p class="text-sm text-gray-600 mb-3">by ${book.author}</p>
                 <div class="flex items-center justify-between mb-4">
-                    <span class="text-2xl font-bold text-purple-600">$${book.price}</span>
+                    <span class="text-2xl font-bold" style="color: #778873;">$${book.price}</span>
                     <span class="text-xs text-gray-500 uppercase px-2 py-1 bg-gray-100 rounded">${book.category}</span>
                 </div>
-                <button onclick="addToCart(${book.id})" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 rounded-lg font-medium hover:opacity-90 transition">
+                <button onclick="addToCart(${book.id})" class="w-full text-white py-2 rounded-lg font-medium transition" style="background: linear-gradient(to right, #A1BC98, #778873);" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
                     <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
                 </button>
             </div>
@@ -213,23 +244,109 @@ categoryBtns.forEach(btn => {
 // Add to cart function
 function addToCart(bookId) {
     const book = booksData.find(b => b.id === bookId);
-    if (book) {
-        cart.push(book);
-        updateCartCount();
-        showNotification(`"${book.title}" added to cart!`);
+    if (!book) return;
+    const existing = cart.find(item => item.id === bookId);
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push({ id: bookId, qty: 1 });
     }
+    updateCartCount();
+    renderCart();
+    showNotification(`"${book.title}" added to cart!`);
 }
 
 // Update cart count
 function updateCartCount() {
-    const cartCount = document.querySelector('.fa-shopping-cart').nextElementSibling;
-    cartCount.textContent = cart.length;
+    const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+    if (cartCountBadge) cartCountBadge.textContent = totalItems;
+}
+
+function formatCurrency(num) {
+    return `$${num.toFixed(2)}`;
+}
+
+function renderCart() {
+    if (!cartItemsContainer) return;
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = `
+            <div class="text-center text-gray-600 py-10">
+                <i class="fas fa-shopping-basket text-3xl mb-2" style="color:#778873"></i>
+                <p>Your cart is empty.</p>
+            </div>
+        `;
+        if (cartGrandTotalEl) cartGrandTotalEl.textContent = formatCurrency(0);
+        return;
+    }
+
+    let grandTotal = 0;
+    cartItemsContainer.innerHTML = cart.map(item => {
+        const book = booksData.find(b => b.id === item.id);
+        if (!book) return '';
+        const itemTotal = book.price * item.qty;
+        grandTotal += itemTotal;
+        return `
+            <div class="flex items-center border rounded-lg p-3">
+                <img src="${book.image}" alt="${book.title}" class="w-16 h-20 object-cover rounded mr-3">
+                <div class="flex-1">
+                    <h4 class="font-semibold text-gray-800 truncate">${book.title}</h4>
+                    <div class="text-sm text-gray-600">Unit: ${formatCurrency(book.price)}</div>
+                    <div class="mt-2 flex items-center">
+                        <button class="px-2 py-1 rounded border" style="color:#778873; border-color:#D2DCB6" onclick="decQty(${book.id})">-</button>
+                        <span class="mx-3 font-semibold">${item.qty}</span>
+                        <button class="px-2 py-1 rounded border" style="color:#778873; border-color:#D2DCB6" onclick="incQty(${book.id})">+</button>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="text-gray-700 font-semibold" style="color:#778873">${formatCurrency(itemTotal)}</div>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    if (cartGrandTotalEl) cartGrandTotalEl.textContent = formatCurrency(grandTotal);
+}
+
+function incQty(bookId) {
+    const item = cart.find(i => i.id === bookId);
+    if (item) {
+        item.qty += 1;
+        updateCartCount();
+        renderCart();
+    }
+}
+
+function decQty(bookId) {
+    const idx = cart.findIndex(i => i.id === bookId);
+    if (idx > -1) {
+        cart[idx].qty -= 1;
+        if (cart[idx].qty <= 0) {
+            cart.splice(idx, 1);
+        }
+        updateCartCount();
+        renderCart();
+    }
+}
+
+if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+        if (cart.length === 0) {
+            showNotification('Your cart is empty.');
+            return;
+        }
+        const total = cart.reduce((sum, item) => {
+            const book = booksData.find(b => b.id === item.id);
+            return sum + (book ? book.price * item.qty : 0);
+        }, 0);
+        showNotification(`Proceeding to checkout: ${formatCurrency(total)}`);
+    });
 }
 
 // Show notification
 function showNotification(message) {
     const notification = document.createElement('div');
-    notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-300';
+    notification.className = 'fixed top-20 right-4 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-300';
+    notification.style.backgroundColor = '#A1BC98';
     notification.innerHTML = `
         <div class="flex items-center">
             <i class="fas fa-check-circle mr-2"></i>
@@ -272,3 +389,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Initialize page
 displayBooks('all');
+// Initial render for empty cart
+renderCart();
