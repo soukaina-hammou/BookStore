@@ -45,7 +45,7 @@ const booksData = [
         author: "Sarah Darkmore",
         price: 21.99,
         category: "horror",
-        image: "https://i.pinimg.com/736x/4b/d0/2d/4bd02dd3ed4089405a387fd058ff0c42.jpg",
+        image: "https://i.pinimg.com/736x/97/7d/7f/977d7fa2c5db4bb269837ea106dc5c17.jpg",
         rating: 4.5
     },
     {
@@ -54,7 +54,7 @@ const booksData = [
         author: "Vincent Crow",
         price: 23.99,
         category: "horror",
-        image: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/91/87/06/918706df0555c94f874e57558e8d8be1.jpg",
         rating: 4.4
     },
     {
@@ -63,7 +63,7 @@ const booksData = [
         author: "Isabella Graves",
         price: 20.99,
         category: "horror",
-        image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/f2/04/85/f204850981ec894ccc70fd722bec565d.jpg",
         rating: 4.6
     },
     {
@@ -72,7 +72,7 @@ const booksData = [
         author: "Nathan Shadow",
         price: 22.99,
         category: "horror",
-        image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/a7/9c/5e/a79c5ec5a335069135b98ce64d88e4f2.jpg",
         rating: 4.7
     },
     
@@ -83,7 +83,7 @@ const booksData = [
         author: "Sophie Laurent",
         price: 18.99,
         category: "romantic",
-        image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/97/7d/7f/977d7fa2c5db4bb269837ea106dc5c17.jpg",
         rating: 4.8
     },
     {
@@ -92,7 +92,7 @@ const booksData = [
         author: "Emily Rose",
         price: 17.99,
         category: "romantic",
-        image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/35/4c/78/354c78345005b2876fe7f2c8b05cd630.jpg",
         rating: 4.6
     },
     {
@@ -101,7 +101,7 @@ const booksData = [
         author: "Olivia Bennett",
         price: 19.99,
         category: "romantic",
-        image: "https://images.unsplash.com/photo-1491841651911-c44c30c34548?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/78/19/d5/7819d5d1f5ef7b5e70d5f13856c787cb.jpg",
         rating: 4.7
     },
     {
@@ -110,7 +110,7 @@ const booksData = [
         author: "Charlotte Vale",
         price: 16.99,
         category: "romantic",
-        image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/16/65/27/16652709ad6b3a5cf1a6ce55c4ce1fd3.jpg",
         rating: 4.9
     },
     
@@ -150,7 +150,116 @@ const booksData = [
         category: "self-development",
         image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
         rating: 4.7
+    },
+    {
+        id: 17,
+        title: "The Power of Focus",
+        author: "Sarah Johnson",
+        price: 26.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        rating: 4.7
+    },
+    {
+        id: 18,
+        title: "Emotional Intelligence",
+        author: "Daniel Smith",
+        price: 26.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        rating: 4.7
+    },
+    {
+        id: 19,
+        title: "The Art of Leadership",
+        author: "Robert Davis",
+        price: 32.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        rating: 4.8
+    },
+    {
+        id: 20,
+        title: "The Art of Leadership",
+        author: "Robert Davis",
+        price: 32.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        rating: 4.7
+    },
+    {
+        id: 21,
+        title: "The Art of Leadership", 
+        author: "Robert Davis",
+        price: 32.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        rating: 4.7
+    },
+    {
+        id: 22,
+        title: "The Art of Leadership",
+        author: "Robert Davis",
+        price: 32.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        rating: 4.7
+    },
+    {
+        id: 23,
+        title: "The Art of Leadership",
+        author: "Robert Davis",
+        price: 32.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        rating: 4.7
+    },
+    {
+        id: 24,
+        title: "The Art of Leadership",
+        author: "Robert Davis",
+        price: 32.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        rating: 4.7
+    },
+    {
+        id: 25,
+        title: "The Art of Leadership",
+        author: "Robert Davis",
+        price: 32.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        rating: 4.7
+    },
+    {
+        id: 26,
+        title: "The Art of Leadership",
+        author: "Robert Davis",
+        price: 32.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        rating: 4.7
+    },
+    {
+        id: 27,
+        title: "The Art of Leadership",
+        author: "Robert Davis",
+        price: 32.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        rating: 4.7
+    },
+    {
+        id: 28,
+        title: "The Art of Leadership",
+        author: "Robert Davis",
+        price: 32.99,
+        category: "self-development",
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        rating: 4.7
     }
+
 ];
 
 // Initialize cart (stores objects: { id, qty })
