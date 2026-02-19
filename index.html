@@ -44,6 +44,76 @@
         .navbar-shadow {
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
+        .form-input:focus {
+            border-color: #A1BC98;
+            box-shadow: 0 0 0 2px #A1BC98;
+        }
+
+        .text-brand {
+            color: #778873;
+        }
+
+        .brand-title {
+            background: linear-gradient(to right, #A1BC98, #778873);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link:hover {
+            color: #778873;
+        }
+
+        .nav-btn:hover {
+            color: #778873;
+        }
+
+        .cart-header {
+            background: linear-gradient(to right, #A1BC98, #778873);
+        }
+
+        .cart-total {
+            color: #778873;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(to right, #A1BC98, #778873);
+        }
+
+        .btn-gradient:hover {
+            opacity: 0.9;
+        }
+
+        .browse-btn {
+            color: #778873;
+        }
+
+        .browse-btn:hover {
+            background-color: #F1F3E0;
+        }
+
+        .icon-circle {
+            background-color: #D2DCB6;
+        }
+
+        .icon-brand {
+            color: #778873;
+        }
+
+        .social-link {
+            background-color: #D2DCB6;
+            color: #778873;
+        }
+
+        .social-link:hover {
+            background-color: #778873;
+            color: white;
+        }
+
+        .footer-icon {
+            color: #A1BC98;
+        }
     </style>
     </head>
     <body class="bg-gray-50">
@@ -53,51 +123,33 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
                     <div class="flex items-center">
-                        <i class="fas fa-book-open text-3xl mr-2"
-                            style="color: #778873;"></i>
-                        <span class="text-2xl font-bold"
-                            style="background: linear-gradient(to right, #A1BC98, #778873); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">BookHaven</span>
+                        <i class="fas fa-book-open text-3xl mr-2 text-brand"></i>
+                        <span class="text-2xl font-bold brand-title">BookHaven</span>
                     </div>
 
                     <div class="hidden md:flex space-x-8">
                         <a href="#home"
-                            class="text-gray-700 font-medium transition"
-                            style="--hover-color: #778873;"
-                            onmouseover="this.style.color='#778873'"
-                            onmouseout="this.style.color=''">Home</a>
+                            class="nav-link text-gray-700 font-medium transition">Home</a>
                         <a href="#books"
-                            class="text-gray-700 font-medium transition"
-                            style="--hover-color: #778873;"
-                            onmouseover="this.style.color='#778873'"
-                            onmouseout="this.style.color=''">Books</a>
+                            class="nav-link text-gray-700 font-medium transition">Books</a>
                         <a href="#about"
-                            class="text-gray-700 font-medium transition"
-                            style="--hover-color: #778873;"
-                            onmouseover="this.style.color='#778873'"
-                            onmouseout="this.style.color=''">About Us</a>
+                            class="nav-link text-gray-700 font-medium transition">About Us</a>
                         <a href="#contact"
-                            class="text-gray-700 font-medium transition"
-                            style="--hover-color: #778873;"
-                            onmouseover="this.style.color='#778873'"
-                            onmouseout="this.style.color=''">Contact</a>
+                            class="nav-link text-gray-700 font-medium transition">Contact</a>
                     </div>
 
                     <div class="flex items-center space-x-4">
-                        <button class="text-gray-700 transition"
-                            onmouseover="this.style.color='#778873'"
-                            onmouseout="this.style.color=''">
+                        <button type="button" class="nav-btn text-gray-700 transition" title="Search">
                             <i class="fas fa-search text-xl"></i>
                         </button>
                         <button id="cartButton"
-                            class="text-gray-700 transition relative"
-                            onmouseover="this.style.color='#778873'"
-                            onmouseout="this.style.color=''">
+                            class="nav-btn text-gray-700 transition relative">
                             <i class="fas fa-shopping-cart text-xl"></i>
                             <span id="cartCount"
                                 class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
                         </button>
-                        <button class="md:hidden text-gray-700"
-                            id="mobileMenuBtn">
+                        <button type="button" class="md:hidden text-gray-700"
+                            id="mobileMenuBtn" title="Open menu" aria-label="Open menu">
                             <i class="fas fa-bars text-xl"></i>
                         </button>
                     </div>
@@ -107,19 +159,11 @@
             <!-- Mobile Menu -->
             <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
                 <div class="px-4 pt-2 pb-4 space-y-2">
-                    <a href="home" class="block py-2 text-gray-700 font-medium"
-                        onmouseover="this.style.color='#778873'"
-                        onmouseout="this.style.color=''">Home</a>
-                    <a href="books" class="block py-2 text-gray-700 font-medium"
-                        onmouseover="this.style.color='#778873'"
-                        onmouseout="this.style.color=''">Books</a>
-                    <a href="about" class="block py-2 text-gray-700 font-medium"
-                        onmouseover="this.style.color='#778873'"
-                        onmouseout="this.style.color=''">About Us</a>
+                    <a href="home" class="nav-link block py-2 text-gray-700 font-medium">Home</a>
+                    <a href="books" class="nav-link block py-2 text-gray-700 font-medium">Books</a>
+                    <a href="about" class="nav-link block py-2 text-gray-700 font-medium">About Us</a>
                     <a href="contact"
-                        class="block py-2 text-gray-700 font-medium"
-                        onmouseover="this.style.color='#778873'"
-                        onmouseout="this.style.color=''">Contact</a>
+                        class="nav-link block py-2 text-gray-700 font-medium">Contact</a>
                 </div>
             </div>
         </nav>
@@ -129,10 +173,9 @@
             class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
         <aside id="cartDrawer"
             class="fixed top-0 right-0 h-full w-80 sm:w-96 bg-white shadow-xl transform translate-x-full transition-transform duration-300 z-50">
-            <div class="flex items-center justify-between p-4 border-b"
-                style="background: linear-gradient(to right, #A1BC98, #778873);">
+            <div class="flex items-center justify-between p-4 border-b cart-header">
                 <h3 class="text-white font-semibold">Your Cart</h3>
-                <button id="cartCloseBtn" class="text-white">
+                <button type="button" id="cartCloseBtn" class="text-white" title="Close cart" aria-label="Close cart">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -143,14 +186,10 @@
             <div class="p-4 border-t">
                 <div class="flex justify-between mb-3">
                     <span class="font-semibold text-gray-700">Grand Total</span>
-                    <span id="cartGrandTotal" class="font-bold"
-                        style="color:#778873">$0.00</span>
+                    <span id="cartGrandTotal" class="font-bold cart-total">$0.00</span>
                 </div>
                 <button id="checkoutBtn"
-                    class="w-full text-white py-3 rounded-lg font-semibold transition"
-                    style="background: linear-gradient(to right, #A1BC98, #778873);"
-                    onmouseover="this.style.opacity='0.9'"
-                    onmouseout="this.style.opacity='1'">Checkout</button>
+                    class="w-full text-white py-3 rounded-lg font-semibold transition btn-gradient">Checkout</button>
             </div>
         </aside>
 
@@ -162,10 +201,7 @@
                 <p class="text-xl md:text-2xl mb-8 opacity-90">Explore thousands
                     of books and novels from every genre</p>
                 <a href="#books"
-                    class="inline-block bg-white px-8 py-3 rounded-full font-semibold text-lg transition transform hover:scale-105"
-                    style="color: #778873;"
-                    onmouseover="this.style.backgroundColor='#F1F3E0'"
-                    onmouseout="this.style.backgroundColor='white'">
+                    class="inline-block bg-white px-8 py-3 rounded-full font-semibold text-lg transition transform hover:scale-105 browse-btn">
                     Browse Collection
                 </a>
             </div>
@@ -226,10 +262,8 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="text-center p-6">
                         <div
-                            class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
-                            style="background-color: #D2DCB6;">
-                            <i class="fas fa-book text-3xl"
-                                style="color: #778873;"></i>
+                            class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 icon-circle">
+                            <i class="fas fa-book text-3xl icon-brand"></i>
                         </div>
                         <h3
                             class="text-xl font-semibold mb-3 text-gray-800">Vast
@@ -240,10 +274,8 @@
                     </div>
                     <div class="text-center p-6">
                         <div
-                            class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
-                            style="background-color: #D2DCB6;">
-                            <i class="fas fa-truck text-3xl"
-                                style="color: #778873;"></i>
+                            class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 icon-circle">
+                            <i class="fas fa-truck text-3xl icon-brand"></i>
                         </div>
                         <h3
                             class="text-xl font-semibold mb-3 text-gray-800">Fast
@@ -253,10 +285,8 @@
                     </div>
                     <div class="text-center p-6">
                         <div
-                            class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
-                            style="background-color: #D2DCB6;">
-                            <i class="fas fa-star text-3xl"
-                                style="color: #778873;"></i>
+                            class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 icon-circle">
+                            <i class="fas fa-star text-3xl icon-brand"></i>
                         </div>
                         <h3
                             class="text-xl font-semibold mb-3 text-gray-800">Quality
@@ -282,39 +312,32 @@
                     <div class="bg-white p-8 rounded-lg shadow-lg">
                         <form id="contactForm">
                             <div class="mb-4">
-                                <label
+                                <label for="contactName"
                                     class="block text-gray-700 font-medium mb-2">Name</label>
-                                <input type="text"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
-                                    style="--tw-ring-color: #A1BC98;"
-                                    onfocus="this.style.borderColor='#A1BC98'; this.style.boxShadow='0 0 0 2px #A1BC98'"
-                                    onblur="this.style.borderColor=''; this.style.boxShadow=''"
+                                <input type="text" id="contactName"
+                                    placeholder="Your name"
+                                    class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none"
                                     required>
                             </div>
                             <div class="mb-4">
-                                <label
+                                <label for="contactEmail"
                                     class="block text-gray-700 font-medium mb-2">Email</label>
-                                <input type="email"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
-                                    onfocus="this.style.borderColor='#A1BC98'; this.style.boxShadow='0 0 0 2px #A1BC98'"
-                                    onblur="this.style.borderColor=''; this.style.boxShadow=''"
+                                <input type="email" id="contactEmail"
+                                    placeholder="Your email"
+                                    class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none"
                                     required>
                             </div>
                             <div class="mb-4">
-                                <label
+                                <label for="contactMessage"
                                     class="block text-gray-700 font-medium mb-2">Message</label>
-                                <textarea rows="4"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
-                                    onfocus="this.style.borderColor='#A1BC98'; this.style.boxShadow='0 0 0 2px #A1BC98'"
-                                    onblur="this.style.borderColor=''; this.style.boxShadow=''"
+                                <textarea rows="4" id="contactMessage"
+                                    placeholder="Your message"
+                                    class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none"
                                     required></textarea>
                             </div>
                             <button type="submit"
-                                class="w-full text-white py-3 rounded-lg font-semibold transition"
-                                style="background: linear-gradient(to right, #A1BC98, #778873);"
-                                onmouseover="this.style.opacity='0.9'"
-                                onmouseout="this.style.opacity='1'">
-                                Send Message
+                                class="w-full text-white py-3 rounded-lg font-semibold transition btn-gradient">
+g                                Send Message
                             </button>
                         </form>
                     </div>
@@ -323,10 +346,8 @@
                     <div>
                         <div class="mb-8">
                             <div class="flex items-start mb-6">
-                                <div class="p-3 rounded-lg mr-4"
-                                    style="background-color: #D2DCB6;">
-                                    <i class="fas fa-map-marker-alt text-xl"
-                                        style="color: #778873;"></i>
+                                <div class="p-3 rounded-lg mr-4 icon-circle">
+                                    <i class="fas fa-map-marker-alt text-xl icon-brand"></i>
                                 </div>
                                 <div>
                                     <h3
@@ -337,10 +358,8 @@
                                 </div>
                             </div>
                             <div class="flex items-start mb-6">
-                                <div class="p-3 rounded-lg mr-4"
-                                    style="background-color: #D2DCB6;">
-                                    <i class="fas fa-phone text-xl"
-                                        style="color: #778873;"></i>
+                                <div class="p-3 rounded-lg mr-4 icon-circle">
+                                    <i class="fas fa-phone text-xl icon-brand"></i>
                                 </div>
                                 <div>
                                     <h3
@@ -350,10 +369,8 @@
                                 </div>
                             </div>
                             <div class="flex items-start mb-6">
-                                <div class="p-3 rounded-lg mr-4"
-                                    style="background-color: #D2DCB6;">
-                                    <i class="fas fa-envelope text-xl"
-                                        style="color: #778873;"></i>
+                                <div class="p-3 rounded-lg mr-4 icon-circle">
+                                    <i class="fas fa-envelope text-xl icon-brand"></i>
                                 </div>
                                 <div>
                                     <h3
@@ -368,32 +385,20 @@
                             <h3 class="font-semibold text-gray-800 mb-4">Follow
                                 Us</h3>
                             <div class="flex space-x-4">
-                                <a href="#"
-                                    class="w-10 h-10 rounded-full flex items-center justify-center transition"
-                                    style="background-color: #D2DCB6; color: #778873;"
-                                    onmouseover="this.style.backgroundColor='#778873'; this.style.color='white'"
-                                    onmouseout="this.style.backgroundColor='#D2DCB6'; this.style.color='#778873'">
+                                <a href="#" aria-label="Facebook"
+                                    class="social-link w-10 h-10 rounded-full flex items-center justify-center transition">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
-                                <a href="#"
-                                    class="w-10 h-10 rounded-full flex items-center justify-center transition"
-                                    style="background-color: #D2DCB6; color: #778873;"
-                                    onmouseover="this.style.backgroundColor='#778873'; this.style.color='white'"
-                                    onmouseout="this.style.backgroundColor='#D2DCB6'; this.style.color='#778873'">
+                                <a href="#" aria-label="Twitter"
+                                    class="social-link w-10 h-10 rounded-full flex items-center justify-center transition">
                                     <i class="fab fa-twitter"></i>
                                 </a>
-                                <a href="#"
-                                    class="w-10 h-10 rounded-full flex items-center justify-center transition"
-                                    style="background-color: #D2DCB6; color: #778873;"
-                                    onmouseover="this.style.backgroundColor='#778873'; this.style.color='white'"
-                                    onmouseout="this.style.backgroundColor='#D2DCB6'; this.style.color='#778873'">
+                                <a href="#" aria-label="Instagram"
+                                    class="social-link w-10 h-10 rounded-full flex items-center justify-center transition">
                                     <i class="fab fa-instagram"></i>
                                 </a>
-                                <a href="#"
-                                    class="w-10 h-10 rounded-full flex items-center justify-center transition"
-                                    style="background-color: #D2DCB6; color: #778873;"
-                                    onmouseover="this.style.backgroundColor='#778873'; this.style.color='white'"
-                                    onmouseout="this.style.backgroundColor='#D2DCB6'; this.style.color='#778873'">
+                                <a href="#" aria-label="LinkedIn"
+                                    class="social-link w-10 h-10 rounded-full flex items-center justify-center transition">
                                     <i class="fab fa-linkedin-in"></i>
                                 </a>
                             </div>
@@ -407,8 +412,7 @@
         <footer class="bg-gray-900 text-white py-12 px-4">
             <div class="max-w-7xl mx-auto text-center">
                 <div class="flex items-center justify-center mb-4">
-                    <i class="fas fa-book-open text-2xl mr-2"
-                        style="color: #A1BC98;"></i>
+                    <i class="fas fa-book-open text-2xl mr-2 footer-icon"></i>
                     <span class="text-2xl font-bold">BookHaven</span>
                 </div>
                 <p class="text-gray-400 mb-4">Your gateway to endless stories

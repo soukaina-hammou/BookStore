@@ -83,7 +83,7 @@ const booksData = [
         author: "Sophie Laurent",
         price: 18.99,
         category: "romantic",
-        image: "https://i.pinimg.com/736x/97/7d/7f/977d7fa2c5db4bb269837ea106dc5c17.jpg",
+        image: "https://i.pinimg.com/1200x/78/fa/75/78fa75fb0d3e117fecda755db3852527.jpg",
         rating: 4.8
     },
     {
@@ -92,7 +92,7 @@ const booksData = [
         author: "Emily Rose",
         price: 17.99,
         category: "romantic",
-        image: "https://i.pinimg.com/736x/35/4c/78/354c78345005b2876fe7f2c8b05cd630.jpg",
+        image: "https://i.pinimg.com/1200x/c5/da/64/c5da64aa10c39acefab9c803a1fc71ee.jpg",
         rating: 4.6
     },
     {
@@ -101,7 +101,7 @@ const booksData = [
         author: "Olivia Bennett",
         price: 19.99,
         category: "romantic",
-        image: "https://i.pinimg.com/736x/78/19/d5/7819d5d1f5ef7b5e70d5f13856c787cb.jpg",
+        image: "https://i.pinimg.com/736x/80/5f/92/805f9280444219b5d267021fa0978661.jpg",
         rating: 4.7
     },
     {
@@ -121,7 +121,7 @@ const booksData = [
         author: "Dr. James Wilson",
         price: 29.99,
         category: "self-development",
-        image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/2d/a6/b4/2da6b401c88efc38b4699e7b9e0b9b5e.jpg",
         rating: 4.9
     },
     {
@@ -130,7 +130,7 @@ const booksData = [
         author: "Michael Roberts",
         price: 27.99,
         category: "self-development",
-        image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/b9/9b/44/b99b4457f65ac8a58e5cfc2cdf35c322.jpg",
         rating: 4.8
     },
     {
@@ -139,7 +139,7 @@ const booksData = [
         author: "Patricia Chen",
         price: 25.99,
         category: "self-development",
-        image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/4f/a9/fa/4fa9fac12b0745f9d6f28af6e6cfbe16.jpg",
         rating: 4.9
     },
     {
@@ -148,7 +148,7 @@ const booksData = [
         author: "David Martinez",
         price: 28.99,
         category: "self-development",
-        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/e9/9b/b8/e99bb87beae2667d3e13685f912c144e.jpg",
         rating: 4.7
     },
     {
@@ -157,7 +157,7 @@ const booksData = [
         author: "Sarah Johnson",
         price: 26.99,
         category: "self-development",
-        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/1200x/8c/e2/8e/8ce28ea02213ad79abe1b49b77c17c04.jpg",
         rating: 4.7
     },
     {
@@ -166,7 +166,7 @@ const booksData = [
         author: "Daniel Smith",
         price: 26.99,
         category: "self-development",
-        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/47/a3/f8/47a3f8bd7568c66f2d8c947de7ed3c6f.jpg",
         rating: 4.7
     },
     {
@@ -175,7 +175,7 @@ const booksData = [
         author: "Robert Davis",
         price: 32.99,
         category: "self-development",
-        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+        image: "https://i.pinimg.com/736x/a2/6a/01/a26a018f3a2552405afae9ade1c90e1c.jpg",
         rating: 4.8
     },
     {
